@@ -50,8 +50,6 @@ func conversionHandler(c *gin.Context, source converter.ConversionSource, runtim
 		defer os.Remove(source.URI)
 	}
 
-	//_, aggressive := c.GetQuery("aggressive")
-
 	conf := c.MustGet("config").(Config)
 	wq := c.MustGet("queue").(chan<- converter.Work)
 	s := c.MustGet("statsd").(*statsd.Client)
@@ -160,9 +158,8 @@ func convertByURLHandler(c *gin.Context) {
 		return
 	}
 
+	// TODO: add support here as well
 	var runtimeOptions *RuntimeOptions
-
-	// TODO: allow get runtime options parameters?
 
 	conversionHandler(c, *source, runtimeOptions)
 }
