@@ -19,11 +19,7 @@ type AthenaPDF struct {
 	// CMD is the base athenapdf CLI command that will be executed.
 	// e.g. 'athenapdf -S -T 120'
 	CMD string
-	// Aggressive will alter the athenapdf CLI conversion behaviour by passing
-	// an '-A' command-line flag to indicate aggressive content extraction
-	// (ideal for a clutter-free reading experience).
-	//Aggressive bool
-
+	// Optional runtime paramters as defined here: https://github.com/arachnys/athenapdf/blob/master/cli/src/athenapdf.js
 	Options []string
 }
 
