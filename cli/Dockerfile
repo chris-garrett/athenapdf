@@ -1,5 +1,5 @@
-FROM debian:8.7
-MAINTAINER Arachnys <techteam@arachnys.com>
+FROM debian:buster-slim
+LABEL maintainer="Arachnys <techteam@arachnys.com>"
 
 RUN echo 'deb http://httpredir.debian.org/debian/ stable main contrib non-free' >> /etc/apt/sources.list
 
@@ -13,7 +13,7 @@ RUN apt-get -yq update && \
         libnotify4 \
         libnss3 \
         libxss1 \
-        libXtst6 \
+        libxtst6 \
         culmus \
         fonts-beng \
         fonts-dejavu \
@@ -29,9 +29,11 @@ RUN apt-get -yq update && \
         fonts-sil-padauk \
         fonts-telu \
         fonts-thai-tlwg \
-        ttf-liberation \
-        ttf-unfonts-core \
-        ttf-wqy-zenhei \
+        fonts-liberation \
+        fonts-unfonts-core \
+        fonts-wqy-zenhei \
+        ttf-mscorefonts-installer \
+    && fc-cache -f -v \
     && apt-get -yq autoremove \
     && apt-get -yq clean \
     && rm -rf /var/lib/apt/lists/* \

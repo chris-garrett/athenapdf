@@ -1,9 +1,9 @@
 CLI_DIR ?= cli
-CLI_IMAGE ?= "arachnysdocker/athenapdf"
+CLI_IMAGE ?= "chrisgarrett/athenapdf"
 CLI_DOCKER_ARTIFACT_DIR ?= "/athenapdf/build/"
 
 SERVICE_DIR ?= weaver
-SERVICE_IMAGE ?= "arachnysdocker/athenapdf-service"
+SERVICE_IMAGE ?= "chrisgarrett/athenapdf-service"
 SERVICE_DOCKER_ARTIFACT_FILE ?= "/go/src/github.com/arachnys/athenapdf/weaver"
 
 P="\\033[34m[+]\\033[0m"
@@ -52,5 +52,9 @@ build:
 	@echo "  $(P) build"
 	@make buildcli
 	@make buildservice
+
+build2021:
+	@echo "  $(P) build"
+	@BUILDKIT=1 docker build --rm -t $(SERVICE_IMAGE) -f Dockerfile .
 
 .PHONY: help buildcli testcli buildservice testservice build

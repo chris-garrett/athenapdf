@@ -1,10 +1,10 @@
 FROM arachnysdocker/athenapdf
-MAINTAINER Arachnys <techteam@arachnys.com>
+LABEL maintainer="Arachnys <techteam@arachnys.com>"
 
 ENV GIN_MODE release
 
 RUN \
-  wget https://github.com/Yelp/dumb-init/releases/download/v1.0.0/dumb-init_1.0.0_amd64.deb \
+  wget https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_amd64.deb \
   && dpkg -i dumb-init_*.deb \
   && rm dumb-init_*.deb \
   && mkdir -p /athenapdf-service/tmp/
